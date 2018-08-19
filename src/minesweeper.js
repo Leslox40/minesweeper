@@ -40,13 +40,13 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
     let randomRowIndex = Math.floor(Math.random() * numberOfRows);
     let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
 
-    //setting the bomb to those locations
-    board[randomRowIndex][randomColumnIndex] = 'B'
-//incrementing bomb counter
-    numberOfBombsPlaced++;
-
-    /*An important NOTE: The code in this loop has the potential to place bombs on Top
-    of already existing bombs. bug will be fixed later */
+    //Checking if bomb does not exist in the randomly chosen location
+    if (board[randomRowIndex][randomColumnIndex] !== 'B') {
+      //setting the bomb to those locations
+      board[randomRowIndex][randomColumnIndex] = 'B'
+      //incrementing bomb counter
+      numberOfBombsPlaced++;
+    }
   }
   return board;
 }

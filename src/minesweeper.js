@@ -8,7 +8,7 @@ const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
 
 //looping through the columns to add the rows
     for(columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
-    //push an empty space that acts as a square on the board
+    //push an empty space that acts as a square/ column on the board
       row.push(' ');
     }
     board.push(row);
@@ -56,6 +56,29 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 const printBoard = board => {
   console.log(board.map(row => row.join(' | ')).join('\n'));
 }
+
+//function to get number of neighbouring bombs around a fliped tile
+const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
+  const neighborOffSets = [[-1, 1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]];
+  const numberOfRows = bombBoard.length;
+  const numberOfColumns = bombBoard[0].length;
+  numberOfBombs = 0;
+
+  neighborOffSets.forEach(offset => {
+    const neighborRowIndex = rowIndex + offset[0];
+    const neighborColumnIndex = columnIndex + offset[1];
+
+    if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRow && neighborColumnIndex >= 0 && neighborColumnIndex < numberOfColumns) {
+      numberOfBombs++;
+    }
+  });
+  return numberOfBombs;
+}
+
+const flipTile = (PlayerBoard, bombBoard, rowIndex, columnIndex) => {
+  if ()
+}
+
 
 //testing results
 let playerBoard = generatePlayerBoard(3, 4);
